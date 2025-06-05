@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: canopy-ai
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: canopy-ai
+  template:
+    metadata:
+      labels:
+        app: canopy-ai
+    spec:
+      containers:
+        - name: canopy-ai
+          image: quay.io/rlundber/canopy-ai:0.2
+          ports:
+            - containerPort: 8501
+          env:
+            - name: LLM_ENDPOINT
+              value: ""
+            - name: SYSTEM_PROMPT
+              value: "Summarize this text."
+            - name: MODEL_NAME
+              value: "tinyllama"

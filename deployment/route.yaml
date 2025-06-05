@@ -1,0 +1,16 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: canopy-ai
+  labels:
+    app: canopy-ai
+spec:
+  to:
+    kind: Service
+    name: canopy-ai
+    weight: 100
+  port:
+    targetPort: http
+  tls:
+    termination: edge
+  wildcardPolicy: None

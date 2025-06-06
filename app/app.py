@@ -19,12 +19,12 @@ st.set_page_config(
 )
 
 # Sidebar navigation
-logo_path = "logo.png"  # Adjust if in a subfolder like 'assets/logo.png'
+logo_path = "logo.png"
 logo = Image.open(logo_path)
 st.sidebar.image(logo, use_container_width=True)
 st.sidebar.title("Canopy AI 🌿")
 feature = st.sidebar.radio(
-    "Choose a feature:",
+    "What do you want to do:",
     ["Summarization", "Content Creation (coming soon)", "Assignment Scoring (coming soon)"],
     index=0
 )

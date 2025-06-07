@@ -3,6 +3,7 @@ import requests
 import streamlit as st
 from PIL import Image
 import json
+from urllib.parse import urljoin
 
 # Load environment variables
 LLM_ENDPOINT = os.getenv("LLM_ENDPOINT")
@@ -84,7 +85,7 @@ if feature == "Summarization":
                         "Content-Type": "application/json",
                     }
 
-                    with requests.post(f"{LLM_ENDPOINT}/v1/chat/completions", json=payload, headers=headers, stream=True, timeout=120) as response:
+                    with requests.post(urljoin(LLM_ENDPOINT, "/v1/chat/completions"), json=payload, headers=headers, stream=True, timeout=120) as response:
                         response.raise_for_status()
                         summary = ""
                         st.success("Here's your summary:")
